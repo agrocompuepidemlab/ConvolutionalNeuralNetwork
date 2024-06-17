@@ -1,0 +1,27 @@
+---
+title: "Pliman"
+author: "Laura"
+date: "2024-06-17"
+output: html_document
+---
+
+```{r}
+library(pliman)
+
+fondo = image_import("C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/f.png")
+sana = image_import("C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/SANA.JPG")
+enferma = image_import("C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/SINTOMAS.png")
+procesamiento <- measure_disease(
+  pattern = "DSC",
+  dir_original = "C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/imagenes_sf" ,
+  dir_processed = "C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/im_pro",
+  save_image = TRUE,
+  img_healthy = sana,
+  img_symptoms = enferma,
+  img_background = fondo,
+  show_image = FALSE
+)
+Severidad = procesamiento$severity
+write.csv(Severidad,"C:/Users/Admin/Downloads/Zona_Pixxel/alternaria/severity2.csv")
+```
+
